@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <title>Contact</title>
+</head>
+<body>
+  <header>
+    <a href="/" class="logo">Audi's Portofolio</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="Skills.html">Skills</a>
+      <a href="Education.html">Education</a>
+      <a href="Experience.html">Experience</a>
+      <a href="Contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <section class="page-section contact">
+    <h1 class="section-title">Contact Me</h1>
+
+    <form class="contact-form" onsubmit="sendToWhatsApp(event)">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
+  </section>
+</body>
+<script>
+  function sendToWhatsApp(e) {
+    e.preventDefault(); // stop form from submitting normally
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    const fullMessage = `Halo, saya ${name} (${email}) ingin menghubungi Anda:\n\n${message}`;
+    const encodedMessage = encodeURIComponent(fullMessage);
+    const phoneNumber = "6282264588264"; 
+
+    const waLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(waLink, "_blank");
+  }
+</script>
+</html>
